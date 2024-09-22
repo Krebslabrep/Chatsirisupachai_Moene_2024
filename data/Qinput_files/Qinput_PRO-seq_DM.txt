@@ -1,0 +1,3 @@
+FileName	SampleName
+/g/krebs/moene/HTS/PROseq/DM/aln2/PROseq_S2_SRX203291_1a075e3bdd90.bam	PROseq_S2_SRX203291
+/g/krebs/moene/HTS/PROseq/DM/aln2/PROseq_S2_SRX203292_13ed86234057d.bam	PROseq_S2_SRX203292

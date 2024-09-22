@@ -1,0 +1,3 @@
+FileName	SampleName
+/g/krebs/DWH/public/MusMusculus/sequencing/ChIP-seq/mESC/input/NT/PMID_22179133/bam/input_mESC_NT_SRX032475.bam	input_mESC_SRX032475
+/g/krebs/DWH/public/MusMusculus/sequencing/ChIP-seq/mESC/PolII/NT/PMID_27026076/bam/PolII_mESC_NT_SRX1089844.bam	PolII_mESC_SRX1089844

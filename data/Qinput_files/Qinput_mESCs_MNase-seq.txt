@@ -1,0 +1,3 @@
+FileName	SampleName
+/g/krebs/DWH/public/MusMusculus/sequencing/MNase-seq/mESC/129S6-SvEvTac_WT/Mnase_30996347/bam/Mnase_mESC_WT_Rep1_SRX3827078.bam	Mnase_mESC_WT_Rep1_SRX3827078
+/g/krebs/DWH/public/MusMusculus/sequencing/MNase-seq/mESC/129S6-SvEvTac_WT/Mnase_30996347/bam/Mnase_mESC_WT_Rep2_SRX3827079.bam	Mnase_mESC_WT_Rep2_SRX3827079

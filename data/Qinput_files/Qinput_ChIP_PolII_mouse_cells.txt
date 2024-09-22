@@ -1,0 +1,5 @@
+FileName	SampleName
+/g/krebs/DWH/public/MusMusculus/sequencing/ChIP-seq/C2C12/PolII/MB/C2C12_21551099/bam/PolII_MB_C2C12_SRX062102.bam	PolII_C2C12_SRX062102
+/g/krebs/DWH/public/MusMusculus/sequencing/ChIP-seq/MEL/Pol2/IgG-mus/Stanford_ChipSeq/bam/Pol2_IgG-mus_MEL_SRX140358.bam	PolII_MEL_SRX140358
+/g/krebs/DWH/public/MusMusculus/sequencing/ChIP-seq/mNP/PolII/NT/PMID_22179133/bam/PolII_mNP_NT_SRX032484.bam	PolII_NP_SRX032484
+/g/krebs/DWH/public/MusMusculus/sequencing/ChIP-seq/mESC/PolII/NT/PMID_27026076/bam/PolII_mESC_NT_SRX1089844.bam	PolII_mESC_SRX1089844

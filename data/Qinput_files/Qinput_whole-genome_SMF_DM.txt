@@ -1,0 +1,5 @@
+FileName	SampleName
+/g/krebs/moene/HTS/SMF/DM/aln_DM6_2/SRR3133326_1_val_1_25814279abdbe.bam	SMF_DM_DE_S2_R1
+/g/krebs/moene/HTS/SMF/DM/aln_DM6_2/SRR3133327_1_val_1_41fd15dbf69c.bam	SMF_DM_DE_S2_R1
+/g/krebs/moene/HTS/SMF/DM/aln_DM6_2/SRR3133328_1_val_1_1977e4ce0afa9.bam	SMF_DM_DE_S2_R2
+/g/krebs/moene/HTS/SMF/DM/aln_DM6_2/SRR3133329_1_val_1_550b54a35461.bam	SMF_DM_DE_S2_R2

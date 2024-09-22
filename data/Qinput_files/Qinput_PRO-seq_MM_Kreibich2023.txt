@@ -1,0 +1,5 @@
+FileName	SampleName
+/g/krebs/kreibich/HTS/PROseq/MM/aln/ES_DNMTTKO_R1_2_66cda60928241.bam	TKO_R1
+/g/krebs/kreibich/HTS/PROseq/MM/aln/ES_DNMTTKO_R2_2_66cda43aaac22.bam	TKO_R2
+/g/krebs/kreibich/HTS/PROseq/MM/aln/ES_DNMTTKO_R3_2_66cda3db56c3e.bam	TKO_R3
+

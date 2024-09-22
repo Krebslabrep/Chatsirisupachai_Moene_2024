@@ -1,0 +1,4 @@
+FileName	SampleName
+/g/krebs/moene/HTS/MNase/DM/aln/MNase_S2_SRX021645_forward_paired_1dbb636f104ff.bam	MNase_S2_SRX021645
+/g/krebs/moene/HTS/MNase/DM/aln/MNase_S2_SRX021646_forward_paired_1dbb51bee663b.bam	MNase_S2_SRX021646
+/g/krebs/moene/HTS/MNase/DM/aln/MNase_S2_SRX021647_forward_paired_652034aead4c.bam	MNase_S2_SRX021647

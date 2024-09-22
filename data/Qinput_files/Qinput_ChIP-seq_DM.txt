@@ -1,0 +1,3 @@
+FileName	SampleName
+/g/krebs/moene/HTS/ChIP-seq/DM/aln/PolII_S2_SRX3981728_2208f7da3a1c4.bam	PolII_S2_SRX3981728
+/g/krebs/moene/HTS/ChIP-seq/DM/aln/PolII_S2_SRX3981727_1e592540614b0.bam	PolII_S2_SRX3981727
