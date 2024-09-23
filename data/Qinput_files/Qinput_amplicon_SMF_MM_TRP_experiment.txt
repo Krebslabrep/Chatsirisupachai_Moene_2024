@@ -1,0 +1,5 @@
+FileName	SampleName
+/g/krebs/moene/HTS/SMF/MM/aln/SMF_MM_AMP_TKO_DE_CM2_Plate4_DMSO_R1_forward_paired_c15e81ed8a7.bam	DMSO_DE_
+/g/krebs/moene/HTS/SMF/MM/aln/SMF_MM_AMP_TKO_DE_CM2_Plate4_DMSO_R2_forward_paired_c14b43cc087c.bam	DMSO_DE_
+/g/krebs/moene/HTS/SMF/MM/aln/SMF_MM_AMP_TKO_DE_CM2_Plate4_TPL_R1_forward_paired_c1557233fb20.bam	TRP_DE_30min
+/g/krebs/moene/HTS/SMF/MM/aln/SMF_MM_AMP_TKO_DE_CM2_Plate4_TPL_R2_forward_paired_c1534d4cadc4.bam	TRP_DE_30min

@@ -1,0 +1,6 @@
+FileName	SampleName
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/Public_datasets/SMF/Krebs_2017/BAM/Dmelanogaster.dm6/QuasR_aln/SRR3133278_1_val_1_2cec765656a772.bam	DMSO_DE_S2
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/Public_datasets/SMF/Krebs_2017/BAM/Dmelanogaster.dm6/QuasR_aln/SRR3133268_1_val_1_2cec76516e60a0.bam	DMSO_DE_S2
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/Public_datasets/SMF/Krebs_2017/BAM/Dmelanogaster.dm6/QuasR_aln/SRR3133282_1_val_1_2cec762fe296a8.bam	TRP_DE_20min_S2
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/Public_datasets/SMF/Krebs_2017/BAM/Dmelanogaster.dm6/QuasR_aln/SRR3133272_1_val_1_2cec76350ecbd9.bam	TRP_DE_20min_S2
+
