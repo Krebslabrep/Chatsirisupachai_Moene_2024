@@ -1,0 +1,3 @@
+FileName	SampleName
+/g/krebs/krebs/HTS/SMF/MM/aln/merged_aln/SMF_MM_TKO_DE_R1_dp_rm.bam	SMF_MM_TKO_DE_R1
+/g/krebs/krebs/HTS/SMF/MM/aln/merged_aln/SMF_MM_TKO_DE_R2_dp_rm.bam	SMF_MM_TKO_DE_R2

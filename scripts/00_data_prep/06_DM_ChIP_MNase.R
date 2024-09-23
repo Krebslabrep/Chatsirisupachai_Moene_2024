@@ -29,6 +29,8 @@ rownames(align_stats) <- unlist(lapply(rownames(align_stats), gsub, pattern = ":
 count_promoters <- as.data.frame(qCount(PolII_proj, promReg, selectReadPosition = "start", shift = 75, clObj = 8))
 count_promoters$width <- NULL
 
+saveRDS(count_promoters, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_promoter_ChIP-seq_counts.rds")
+
 # normalise count promoters
 count_promoters$PolII_S2_SRX3981728 <- unlist(lapply(count_promoters$PolII_S2_SRX3981728, RPM, all_mapped = align_stats[rownames(align_stats) == "PolII_S2_SRX3981728",]$mapped))
 count_promoters$PolII_S2_SRX3981727 <- unlist(lapply(count_promoters$PolII_S2_SRX3981727, RPM, all_mapped = align_stats[rownames(align_stats) == "PolII_S2_SRX3981727",]$mapped))

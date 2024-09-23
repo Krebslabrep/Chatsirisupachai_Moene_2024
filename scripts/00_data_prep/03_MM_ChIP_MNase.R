@@ -1,6 +1,6 @@
 ########## Data preparation for mouse (ChIP-seq & MNase-seq) ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 22.09.2024
+# LastUpdate: 23.09.2024
 
 library(QuasR)
 library(dplyr)
@@ -31,12 +31,14 @@ rownames(align_stats) <- unlist(lapply(rownames(align_stats), gsub, pattern = ":
 count_promoters <- as.data.frame(qCount(ChIP_proj, promReg, selectReadPosition = "start", shift = 75, clObj = 4))
 count_promoters$width <- NULL
 
+saveRDS(count_promoters, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_promoter_ChIP-seq_counts.rds")
+
 # normalise count promoters
 count_promoters$input_mESC_SRX032475 <- unlist(lapply(count_promoters$input_mESC_SRX032475, RPM, all_mapped = align_stats[rownames(align_stats) == "input_mESC_SRX032475",]$mapped))
 count_promoters$PolII_mESC_SRX1089844 <- unlist(lapply(count_promoters$PolII_mESC_SRX1089844, RPM, all_mapped = align_stats[rownames(align_stats) == "PolII_mESC_SRX1089844",]$mapped))
 count_promoters$PolII_enrichment <- count_promoters$PolII_mESC_SRX1089844 - count_promoters$input_mESC_SRX032475
 
-saveRDS(count_promoters, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_promoter_ChIP-seq_counts.rds")
+saveRDS(count_promoters, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_promoter_ChIP-seq_RPM.rds")
 
 ### Select top X% promoters
 prom_QT <- quantile(count_promoters$PolII_enrichment, seq(0, 1, 0.01))
