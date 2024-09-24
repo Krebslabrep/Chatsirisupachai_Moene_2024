@@ -18,11 +18,11 @@ promReg <- promoters(TSSsc_DM, upstream = 100, downstream = 200)
 
 ### Total read counts of the BAM files
 # list all files
-# this file points to the BAM files of PRO-seq in TKO mESC cells (dm6 Spike-in) following a time-course TRP treatment from this study (E-MTAB-14462)
+# this file points to the BAM files of PRO-seq in S2 cells (mm10 Spike-in) following a time-course TRP treatment from this study (E-MTAB-14462)
 Qinput_SpikeIn <- "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/Qinput_files/Qinput_DM_TRP_PRO-seq_mm10SpikeIn.txt"
 SpikeIn_BAMs <- read.delim(Qinput_SpikeIn)$FileName
 SpikeIn_BAMs
-# this file points to the BAM files of PRO-seq in TKO mESC cells following a time-course TRP treatment from this study (E-MTAB-14462)
+# this file points to the BAM files of PRO-seq in S2 cells following a time-course TRP treatment from this study (E-MTAB-14462)
 Qinput_sample <- "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/Qinput_files/Qinput_DM_TRP_PRO-seq.txt"
 sample_BAMs <- read.delim(Qinput_sample)$FileName
 sample_BAMs
