@@ -1,0 +1,10 @@
+FileName	SampleName
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/qPRO_061123_MM/BAM/deDup/TKO_0min_R1_no_rRNAs.bam	TKO_0min_R1
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/qPRO_061123_MM/BAM/deDup/TKO_0min_R2_no_rRNAs.bam	TKO_0min_R2
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/qPRO_061123_MM/BAM/deDup/TKO_10min_R1_no_rRNAs.bam	TKO_10min_R1
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/qPRO_061123_MM/BAM/deDup/TKO_10min_R2_no_rRNAs.bam	TKO_10min_R2
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/qPRO_061123_MM/BAM/deDup/TKO_2.5min_R1_no_rRNAs.bam	TKO_2.5min_R1
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/qPRO_061123_MM/BAM/deDup/TKO_20min_R1_no_rRNAs.bam	TKO_20min_R1
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/qPRO_061123_MM/BAM/deDup/TKO_20min_R2_no_rRNAs.bam	TKO_20min_R2
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/qPRO_061123_MM/BAM/deDup/TKO_5min_R1_no_rRNAs.bam	TKO_5min_R1
+/g/krebs/chatsiri/mouse_droso_PolII/HTS/qPRO_061123_MM/BAM/deDup/TKO_5min_R2_no_rRNAs.bam	TKO_5min_R2
