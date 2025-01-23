@@ -181,7 +181,7 @@ PlottingDF %>%
   ) -> StateQuant_pl
 
 
-##### *** Figure S4 *** #####
+##### *** Figure EV4A *** #####
 layout <- "
   #A
   CB

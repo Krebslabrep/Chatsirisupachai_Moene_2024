@@ -1,16 +1,11 @@
 ########## Get state frequencies out of SM sorting output (merged rep) for Drosophila S2 cells TRP 0 vs 20 min ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 23.09.2024
+# LastUpdate: 23.01.2025
 
 library(dplyr)
 library(ggplot2)
 library(ggpubr)
 library(reshape2)
-
-### Qinput
-# this file points toward BAM files of amplicon SMF in S2 cells from Krebs et al., 2017
-Qinput <- "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/Qinput_files/Qinput_amplicon_SMF_DM_TRP_experiment.txt"
-MySample <- suppressMessages(readr::read_delim(Qinput, delim = "\t")[[2]])
 
 ### amplicon regions
 amplicons <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/amplicon_SMF/DM_amplicon_TSSs.rds")

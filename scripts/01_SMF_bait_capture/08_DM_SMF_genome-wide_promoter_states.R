@@ -1,11 +1,6 @@
 ########## Get state frequencies out of SM sorting output (Drosophila) ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 23.09.2024
-
-### Qinput
-# this file points toward BAM files of whole-genome SMF in S2 cells from Krebs et al., 2017
-Qinput <- "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/Qinput_files/Qinput_whole-genome_SMF_DM.txt"
-MySample <- suppressMessages(readr::read_delim(Qinput, delim = "\t")[[2]])
+# LastUpdate: 23.01.2025
 
 ### TSSs
 TSSsc <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_REFSEQ_reference_transcripts_CAGE_corrected.rds")

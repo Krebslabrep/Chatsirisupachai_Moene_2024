@@ -1,16 +1,11 @@
 ########## Get state frequencies out of SM sorting output (merged rep) ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 23.09.2024
+# LastUpdate: 23.01.2025
 
 library(dplyr)
 library(ggplot2)
 library(ggpubr)
 library(reshape2)
-
-### Qinput
-# this file points toward BAM files of amplicon SMF in TKO mESCs from this study (E-MTAB-14461)
-Qinput <- "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/Qinput_files/Qinput_amplicon_SMF_MM_TRP_experiment.txt"
-MySample <- suppressMessages(readr::read_delim(Qinput, delim = "\t")[[2]])
 
 ### amplicon regions
 amplicons <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/amplicon_SMF/MM_amplicon_regions.rds")

@@ -1,55 +1,54 @@
 ########## Composite plot for mouse SMF whole-genome data in TKO ES and other cells ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 22.09.2024
+# LastUpdate: 23.01.2025
 
 library(ggplot2)
 library(reshape2)
 library(GenomicRanges)
 library(plyranges)
 
+########## Various mouse cell lines (Fig. 1B-D and EV1A-B)
 ### Load data
 TSSsc_MM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_REFSEQ_reference_transcripts_CAGE_corrected.rds")
 TATA_promoters_MM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_TATA_promoters.rds")
 Top_promoters_MM_PolII_ChIP <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_promoter_ChIP-seq_quantile_list.rds")
 Top_promoters_MM_other_types <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_promoter_ChIP-seq_top_5_list_other_cell_types.rds")
-av_met_MM <- readRDS("/g/krebs/moene/for_manuscript/analysis/R_objects/MM/average_meth.rds")    # average methylation from Sonmezer et al., 2021
-AllC_MM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/re_analysis/data/MM/AllC.rds")          # position of all cytosines
-baits.i <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/re_analysis/data/MM/baitsi.rds")        # position of baits
 
-av_met_MM <- av_met_MM[baits.i, ]
-
+##### The below part is for preparing average methylation object from various mouse cell lines
+##### Data are from Sonmezer et al., 2021 and Kreibich et al., 2023
+##### Please skip to line 55
+# av_met_MM <- readRDS("/g/krebs/moene/for_manuscript/analysis/R_objects/MM/average_meth.rds")    # average methylation from Sonmezer et al., 2021
+# AllC_MM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/re_analysis/data/MM/AllC.rds")          # position of all cytosines
+# baits.i <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/re_analysis/data/MM/baitsi.rds")        # position of baits
+# av_met_MM <- av_met_MM[baits.i, ]
 ### merge methylation data from C2C12 and MEL
-# load the C2C12 and MEL data from Kreibich et al., 2023
-C2C12_met_R1 <- readRDS("/g/krebs/krebs/analysis/SMF/MM/methCall/Context_methylation_call_SMF_MM_SMF_MM_C2C12_NO_R1.txt.rds")
-C2C12_met_R1 <- C2C12_met_R1[baits.i, ]
-C2C12_met_R2 <- readRDS("/g/krebs/krebs/analysis/SMF/MM/methCall/Context_methylation_call_SMF_MM_SMF_MM_C2C12_NO_R2.txt.rds")
-C2C12_met_R2 <- C2C12_met_R2[baits.i, ]
-
-MEL_met_R1 <- readRDS("/g/krebs/krebs/analysis/SMF/MM/methCall/Context_methylation_call_SMF_MM_SMF_MM_MEL_NO_R1.txt.rds")
-MEL_met_R1 <- MEL_met_R1[baits.i, ]
-MEL_met_R2 <- readRDS("/g/krebs/krebs/analysis/SMF/MM/methCall/Context_methylation_call_SMF_MM_SMF_MM_MEL_NO_R2.txt.rds")
-MEL_met_R2 <- MEL_met_R2[baits.i, ]
-
-# combine everything in one comparison matrix
-av_met_MM <- cbind(av_met_MM, rowMeans(cbind(C2C12_met_R1$V1,C2C12_met_R2$V1)), rowMeans(cbind(MEL_met_R1$V1,MEL_met_R2$V1)))
-colnames(av_met_MM) <- c("ES", "NP", "TKO", "C2C12", "MEL")
-av_met_MM[av_met_MM == "NaN"] <- NA
-
+### load the C2C12 and MEL data from Kreibich et al., 2023
+# C2C12_met_R1 <- readRDS("/g/krebs/krebs/analysis/SMF/MM/methCall/Context_methylation_call_SMF_MM_SMF_MM_C2C12_NO_R1.txt.rds")
+# C2C12_met_R1 <- C2C12_met_R1[baits.i, ]
+# C2C12_met_R2 <- readRDS("/g/krebs/krebs/analysis/SMF/MM/methCall/Context_methylation_call_SMF_MM_SMF_MM_C2C12_NO_R2.txt.rds")
+# C2C12_met_R2 <- C2C12_met_R2[baits.i, ]
+# MEL_met_R1 <- readRDS("/g/krebs/krebs/analysis/SMF/MM/methCall/Context_methylation_call_SMF_MM_SMF_MM_MEL_NO_R1.txt.rds")
+# MEL_met_R1 <- MEL_met_R1[baits.i, ]
+# MEL_met_R2 <- readRDS("/g/krebs/krebs/analysis/SMF/MM/methCall/Context_methylation_call_SMF_MM_SMF_MM_MEL_NO_R2.txt.rds")
+# MEL_met_R2 <- MEL_met_R2[baits.i, ]
+### combine everything in one comparison matrix
+# av_met_MM <- cbind(av_met_MM, rowMeans(cbind(C2C12_met_R1$V1,C2C12_met_R2$V1)), rowMeans(cbind(MEL_met_R1$V1,MEL_met_R2$V1)))
+# colnames(av_met_MM) <- c("ES", "NP", "TKO", "C2C12", "MEL")
+# av_met_MM[av_met_MM == "NaN"] <- NA
 ### Add methylation data to AllC_MM
-# select only for bait capture regions
-AllC_MM <- AllC_MM[baits.i]
-AllC_MM$V1 <- NULL
-AllC_MM$ES_metNULLAllC_MM$ES_meth <- av_met_MM[,"ES"]
-AllC_MM$NP_meth <- av_met_MM[,"NP"]
-AllC_MM$TKO_meth <- av_met_MM[,"TKO"]
-AllC_MM$C2C12_meth <- av_met_MM[,"C2C12"]
-AllC_MM$MEL_meth <- av_met_MM[,"MEL"]
-
-# the AllC_MM object is too large to upload
-# subset this object by overlap with the promoter regions
-TSS_extended <- resize(TSSsc_MM, fix = "center", width = 1000)
-AllC_MM %>% filter_by_overlaps(TSS_extended) -> AllC_MM_subset
-saveRDS(AllC_MM_subset, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_avg_meth_all_cell_types.rds")
+### select only for bait capture regions
+# AllC_MM <- AllC_MM[baits.i]
+# AllC_MM$V1 <- NULL
+# AllC_MM$ES_metNULLAllC_MM$ES_meth <- av_met_MM[,"ES"]
+# AllC_MM$NP_meth <- av_met_MM[,"NP"]
+# AllC_MM$TKO_meth <- av_met_MM[,"TKO"]
+# AllC_MM$C2C12_meth <- av_met_MM[,"C2C12"]
+# AllC_MM$MEL_meth <- av_met_MM[,"MEL"]
+### the AllC_MM object is too large to upload
+### subset this object by overlap with the promoter regions
+# TSS_extended <- resize(TSSsc_MM, fix = "center", width = 1000)
+# AllC_MM %>% filter_by_overlaps(TSS_extended) -> AllC_MM_subset
+# saveRDS(AllC_MM_subset, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_avg_meth_all_cell_types.rds")
 
 
 ########## Plots ##########
@@ -101,7 +100,7 @@ plot_composite_SMF <- function(TSSs, TSSsc_MM, AllC_MM, meth_call, width = 500, 
           panel.grid.major = element_blank(),
           axis.line = element_line(colour = "black"))
   print(p)
-  dev.off()
+  #dev.off()
   
 }
 
@@ -133,7 +132,7 @@ plot_composite_SMF(TSSs = Top_promoters_MM_PolII_ChIP$bottom10,
                    plot_title = "Bottom 10% mouse TSSs",
                    save_file_name = "SMF_MM_TKO_bottom10_percent_TSSs.pdf")
 
-### Other cell types (*** Figure S1 ***)
+### Other cell types (*** Figure EV1A-B ***)
 # Top 5% mouse TSSs (ES)
 plot_composite_SMF(TSSs = Top_promoters_MM_other_types$top5_mESC,
                    TSSsc_MM = TSSsc_MM,
@@ -206,3 +205,36 @@ plot_composite_SMF(TSSs = Top_promoters_MM_other_types$top5_MEL[Top_promoters_MM
                    plot_title = "Murine erythroleukemia (TATA)",
                    save_file_name = "SMF_MM_MEL_top5_percent_TSSs_TATA.pdf")
 
+
+##### Drosophila OSC (Fig. EV1C-D)
+### Load data DM
+TSSsc_DM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_REFSEQ_reference_transcripts_CAGE_corrected.rds")
+TATA_promoters_DM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_TATA_promoters.rds")
+Top_promoters_DM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_promoter_ChIP-seq_quantile_list.rds")
+ContextMeth_DM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_context_methylation_OSC.rds")
+
+av_met_DM <- as.matrix(ContextMeth_DM$SMF_DM_DE_OSC_MethRate)
+colnames(av_met_DM) <- c("OSC")
+
+TSSs <- Top_promoters_DM$top5
+width <- 500
+meth_call <- "SMF_DM_DE_OSC_MethRate"
+plot_title <- "OSC"
+
+### Top 5%
+plot_composite_SMF(TSSs = Top_promoters_DM$top5,
+                   TSSsc_MM = TSSsc_DM,
+                   AllC_MM = ContextMeth_DM,
+                   meth_call = "SMF_DM_DE_OSC_MethRate",
+                   width = 500,
+                   plot_title = "OSC",
+                   save_file_name = "SMF_DM_OSC_top5_percent_TSSs.pdf")
+
+### Top 5% TATA
+plot_composite_SMF(TSSs = Top_promoters_DM$top5[Top_promoters_DM$top5 %in% TATA_promoters_DM[TATA_promoters_DM$TATA == TRUE,]$gene_id],
+                   TSSsc_MM = TSSsc_DM,
+                   AllC_MM = ContextMeth_DM,
+                   meth_call = "SMF_DM_DE_OSC_MethRate",
+                   width = 500,
+                   plot_title = "OSC (TATA)",
+                   save_file_name = "SMF_DM_OSC_top5_percent_TSSs_TATA.pdf")

@@ -1,9 +1,8 @@
 ########## Plot single-molecule examples for mouse and Drosophila promoters ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 29.08.2024
+# LastUpdate: 23.01.2025
 
 library(GenomicRanges)
-library(dplyr)
 library(ggplot2)
 library(SingleMoleculeFootprinting)
 library(BSgenome.Mmusculus.UCSC.mm10)

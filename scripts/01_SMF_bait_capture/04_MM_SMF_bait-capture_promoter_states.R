@@ -1,11 +1,8 @@
 ########## Get state frequencies out of SM sorting output ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 23.09.2024
+# LastUpdate: 23.01.2025
 
-### Qinput
-# this file points toward BAM files of bait-capture SMF in TKO mESCs from Sonmezer et al., 2021
-Qinput <- "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/Qinput_files/Qinput_SMF_bait_capture_MM.txt"
-MySample <- suppressMessages(readr::read_delim(Qinput, delim = "\t")[[2]])
+library(SingleMoleculeFootprinting)
 
 ### TSSs
 TSSsc <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_REFSEQ_reference_transcripts_CAGE_corrected.rds")
@@ -82,7 +79,7 @@ freq_matrix_all_samples <- state_matrix_generator(SM_df, TSSsc, states, count_or
 
 ##### Collapse states into promoter states
 ### list promoter states
-promoter_states <- Promoterstates()   # function from SingleMoleculeFootprinting (Promoter branch)
+promoter_states <- SingleMoleculeFootprinting::Promoterstates()   # function from SingleMoleculeFootprinting (Promoter branch)
 promoter_statesF <- as.factor(unlist(lapply(seq_along(promoter_states), function(i){
   rep(names(promoter_states[i]), length(promoter_states[[i]]))
 }))[order(unlist(promoter_states))])
@@ -118,7 +115,6 @@ bait_captured_R2 <- bait_captured_R2[order(row.names(bait_captured_R2)), ]
 grouped_freq_mats <- list(SMF_MM_TKO_DE_R1 = bait_captured_R1, SMF_MM_TKO_DE_R2 = bait_captured_R2)
 
 saveRDS(grouped_freq_mats, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/bait_capture_SMF/MM_TKO_DE_bait_capture_promoter_states_freq_matrix.rds")
-
 
 
 # make average

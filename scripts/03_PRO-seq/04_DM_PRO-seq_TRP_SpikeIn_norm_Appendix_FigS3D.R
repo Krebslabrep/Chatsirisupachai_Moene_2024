@@ -1,6 +1,6 @@
 ########## PRO-seq S2 cells: Spike-in normalisation ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 24.09.2024
+# LastUpdate: 23.01.2025
 
 library(QuasR)
 library(BSgenome.Dmelanogaster.UCSC.dm6)
@@ -10,6 +10,7 @@ library(pheatmap)
 library(reshape2)
 library(Rsamtools)
 library(viridis)
+library(ggpointdensity)
 
 ### TSS
 TSSsc_DM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_REFSEQ_reference_transcripts_CAGE_corrected.rds")
@@ -95,7 +96,7 @@ FC_each_rep <- data.frame(TKO_5min_R1 = promCounts_norm$S2_5min_R1/promCounts_no
 row.names(FC_each_rep) <- row.names(promCounts_norm)
 
 
-##### *** Figure S5D *** #####
+##### *** Appendix Fig. S3D *** #####
 time_point_cor <- function(timepoint, df){
   # select time point of interest
   df %>% dplyr::select(contains(timepoint)) -> tmp
@@ -114,22 +115,22 @@ time_point_cor <- function(timepoint, df){
   corr <- as.numeric(round(cor(tmp[1], tmp[2]), 2))
   
   # plotting
-  #pdf(paste0("/g/krebs/chatsiri/mouse_droso_PolII/re_analysis/analysis/qPRO_seq_061123/DM/QC/Fold_change_comparing_with_0min_between_reps", time_point, ".pdf"), 
+  #pdf(paste0("/g/krebs/chatsiri/mouse_droso_PolII/re_analysis/analysis/qPRO_seq_061123/DM/QC/Fold_change_comparing_with_0min_between_reps", timepoint, ".pdf"), 
   #    width = 4.5, height = 4.5, useDingbats=FALSE)
   p <- ggplot(tmp, aes(x = Rep1, y = Rep2)) +
     geom_pointdensity() +
     scale_color_viridis() +
     ggtitle(paste0("Fold change S2: ", gsub(pattern = "_", replacement = "", timepoint))) +
-    xlab("Rep 1") +
-    ylab("Rep 2") +
+    xlab("Fold change to 0 min (Rep 1)") +
+    ylab("Fold change to 0 min (Rep 2)") +
     xlim(c(-7,4)) +
     ylim(c(-7,4)) +
-    annotate("text", x=-6, y=3, label= paste0("r = ", corr), size = 5) +
-    theme(plot.title = element_text(size = 15, hjust = 0.5),
-          axis.text.x = element_text(size = 14),
-          axis.text.y = element_text(size = 14),
-          axis.title.x = element_text(size = 14),
-          axis.title.y = element_text(size = 14),
+    annotate("text", x=-6, y=3, label= paste0("r = ", corr), size = 6) +
+    theme(plot.title = element_text(size = 16, hjust = 0.5),
+          axis.text.x = element_text(size = 15),
+          axis.text.y = element_text(size = 15),
+          axis.title.x = element_text(size = 15),
+          axis.title.y = element_text(size = 15),
           legend.title = element_blank(),
           legend.position = "none",
           panel.background = element_blank(),

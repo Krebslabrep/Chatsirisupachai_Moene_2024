@@ -1,6 +1,6 @@
 ########## Data preparation for Drosophila (PRO-seq) ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 23.09.2024
+# LastUpdate: 28.11.2024
 
 library(QuasR)
 library(dplyr)
@@ -41,6 +41,15 @@ colnames(count_promoters) <- c("S2_R1", "S2_R2")
 count_promoters$S2_avg <- (count_promoters$S2_R1 + count_promoters$S2_R2) / 2
 
 saveRDS(count_promoters, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_promoter_PRO-seq_RPM.rds")
+
+
+# get top 5% PRO-seq
+count_promoters <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_promoter_PRO-seq_RPM.rds")
+sorted_data <- count_promoters[order(-count_promoters$S2_avg), ]
+top_5_percent_count <- ceiling(0.05 * nrow(sorted_data))
+top_5_percent <- head(sorted_data, top_5_percent_count)
+PROseq_DM_top_5 <- row.names(top_5_percent)
+saveRDS(PROseq_DM_top_5, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_promoter_PRO-seq_top_5.rds")
 
 
 ##### PRO-seq profile

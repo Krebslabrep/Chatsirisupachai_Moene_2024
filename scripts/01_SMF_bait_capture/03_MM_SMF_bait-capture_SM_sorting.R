@@ -1,16 +1,12 @@
 ########## Data preparation for mouse (SMF bait-capture SM sorting) ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 23.09.2024
+# LastUpdate: 23.01.2025
 
 library(SingleMoleculeFootprinting)
 library(GenomicRanges)
 library(BSgenome.Mmusculus.UCSC.mm10)
 library(dplyr)
 library(stringi)
-
-### baits regions
-baits_mm10 <- import("/g/krebs/krebs/DB/SureSelect/MouseMethyl_Bait_merged_mm10.bed")
-baits_mm10_ext <- GRanges(seqnames(baits_mm10), IRanges(start(baits_mm10) - 500, end(baits_mm10) + 500))
 
 ### TSSs
 TSSsc <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_REFSEQ_reference_transcripts_CAGE_corrected.rds")

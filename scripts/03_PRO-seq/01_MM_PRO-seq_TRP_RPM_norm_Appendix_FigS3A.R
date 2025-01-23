@@ -1,6 +1,6 @@
-########## PRO-seq S2 cells: RPM normalisation ##########
+########## PRO-seq TKO mESCs: RPM normalisation ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 24.09.2024
+# LastUpdate: 23.01.2025
 
 library(QuasR)
 library(BSgenome.Dmelanogaster.UCSC.dm6)
@@ -10,17 +10,18 @@ library(pheatmap)
 library(reshape2)
 library(Rsamtools)
 library(viridis)
+library(ggpointdensity)
 
 ### TSS
-TSSsc_DM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_REFSEQ_reference_transcripts_CAGE_corrected.rds")
+TSSsc_MM <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_REFSEQ_reference_transcripts_CAGE_corrected.rds")
 
-promReg <- promoters(TSSsc_DM, upstream = 100, downstream = 200)
+promReg <- promoters(TSSsc_MM, upstream = 100, downstream = 200)
 
 ### QuasR project
 # Qinput
 # this file points to the BAM files of PRO-seq in TKO mESC cells following a time-course TRP treatment from this study (E-MTAB-14462)
-Qinput_sample <- "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/Qinput_files/Qinput_DM_TRP_PRO-seq.txt"
-genome <- "BSgenome.Dmelanogaster.UCSC.dm6"
+Qinput_sample <- "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/Qinput_files/Qinput_MM_TRP_PRO-seq.txt"
+genome <- "BSgenome.Mmusculus.UCSC.mm10"
 paired <- "no"
 
 proj <- qAlign(Qinput_sample, genome, paired = paired, checkOnly = TRUE)
@@ -31,7 +32,7 @@ cluObj <- makeCluster(12)
 promCounts <- data.frame(qCount(proj, query = promReg, orientation = "opposite", clObj = cluObj))
 promCounts$width <- NULL
 
-saveRDS(promCounts, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/PRO_seq/Drosophila_S2_TRP_promoter_counts.rds")
+saveRDS(promCounts, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/PRO_seq/mouse_TKO_TRP_promoter_counts.rds")
 
 
 ### Normalisation by RPM
@@ -52,15 +53,15 @@ res_df <- as.data.frame(do.call(cbind, res))
 colnames(res_df) <- colnames(promCounts)
 rownames(res_df) <- rownames(promCounts)
 
-promCounts_RPM <- res_df[,c("S2_0min_R1", "S2_0min_R2", "S2_2.5min_R2", "S2_5min_R1", "S2_5min_R2",
-                            "S2_10min_R1", "S2_10min_R2", "S2_20min_R1", "S2_20min_R2")]
+promCounts_RPM <- res_df[,c("TKO_0min_R1", "TKO_0min_R2", "TKO_2.5min_R1", "TKO_5min_R1", "TKO_5min_R2",
+                            "TKO_10min_R1", "TKO_10min_R2", "TKO_20min_R1", "TKO_20min_R2")]
 
-saveRDS(promCounts_RPM, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/PRO_seq/Drosophila_S2_TRP_promoter_RPM.rds")
+saveRDS(promCounts_RPM, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/PRO_seq/mouse_TKO_TRP_promoter_RPM.rds")
 
 
 
-##### *** Figure S5B *** #####
-genes <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/DM/DM_REFSEQ_reference_transcripts_CAGE_corrected_whole_gene.rds")
+##### *** Appendix Fig. S3A *** #####
+genes <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_REFSEQ_reference_transcripts_CAGE_corrected_whole_gene.rds")
 # keep only genes that are longer than 600 bases 
 # as initially we check also the correlation between PRO-seq signal at the gene body, which also highly correlated. But we didn't put this gene body correlation in the manuscript.
 genes <- genes[width(genes) >= 600, ]
@@ -87,12 +88,12 @@ plot_cor <- function(timepoint, df){
     ggtitle(paste0("TKO ", (gsub("_", "", timepoint)))) +
     xlab("log10(RPM) Rep 1") +
     ylab("log10(RPM) Rep 2") +
-    annotate("text", x=-1, y=3, label= paste0("r = ", rep_corr), size = 5) +
-    theme(plot.title = element_text(size = 15, hjust = 0.5),
-          axis.text.x = element_text(size = 14),
-          axis.text.y = element_text(size = 14),
-          axis.title.x = element_text(size = 14),
-          axis.title.y = element_text(size = 14),
+    annotate("text", x=0, y=2, label= paste0("r = ", rep_corr), size = 6) +
+    theme(plot.title = element_text(size = 16, hjust = 0.5),
+          axis.text.x = element_text(size = 15),
+          axis.text.y = element_text(size = 15),
+          axis.title.x = element_text(size = 15),
+          axis.title.y = element_text(size = 15),
           legend.title = element_blank(),
           legend.position = "none",
           panel.background = element_blank(),

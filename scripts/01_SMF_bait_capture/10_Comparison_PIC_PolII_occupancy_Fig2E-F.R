@@ -1,6 +1,6 @@
 ########## PIC and Pol II state abundance in mouse vs Drosophila ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 23.09.2024
+# LastUpdate: 10.01.2025
 
 library(dplyr)
 library(tidyverse)
@@ -53,13 +53,14 @@ df$group <- as.factor(df$group)
 #pdf("/g/krebs/chatsiri/mouse_droso_PolII/re_analysis/analysis/SMF/MM_DM_comparison/PIC_state_abundance_DM_MM_downstream_bins.pdf",
 #    height = 6, width = 4.5, useDingbats = FALSE)
 p <- ggboxplot(df, x = "group", y = "PIC_all", 
-               fill = "species", palette = c(alpha("darkblue", alpha = 0.4), alpha("darkred", alpha = 0.4)),
+               color = "species",
                x.order = c("Drosophila_FALSE", "Drosophila_TRUE", "Mouse_FALSE", "Mouse_TRUE"),
                xlab = "TATA",
                ylab = "state abundance (%)",
                title = "PIC") +
   scale_x_discrete(limits = c("Drosophila_FALSE", "Drosophila_TRUE", "Mouse_FALSE", "Mouse_TRUE"),
                    labels = c("TATA-less", "TATA", "TATA-less", "TATA")) +
+  scale_color_manual(values = c("#08519c", "#a50f15")) +
   theme(plot.title = element_text(size = 15, hjust = 0.5),
         axis.text.x = element_text(size = 14, angle = 45, vjust = 1, hjust = 1),
         axis.text.y = element_text(size = 14),
@@ -99,13 +100,14 @@ df$group <- as.factor(df$group)
 #pdf("/g/krebs/chatsiri/mouse_droso_PolII/re_analysis/analysis/SMF/MM_DM_comparison/polII_state_abundance_DM_MM_downstream_bins.pdf",
 #    height = 6, width = 4.5, useDingbats = FALSE)
 p <- ggboxplot(df, x = "group", y = "polII_all", 
-               fill = "species", palette = c(alpha("darkblue", alpha = 0.4), alpha("darkred", alpha = 0.4)),
+               color = "species",
                x.order = c("Drosophila_FALSE", "Drosophila_TRUE", "Mouse_FALSE", "Mouse_TRUE"),
                xlab = "TATA",
                ylab = "state abundance (%)",
                title = "Pol II") +
   scale_x_discrete(limits = c("Drosophila_FALSE", "Drosophila_TRUE", "Mouse_FALSE", "Mouse_TRUE"),
                    labels = c("TATA-less", "TATA", "TATA-less", "TATA")) +
+  scale_color_manual(values = c("#08519c", "#a50f15")) +
   theme(plot.title = element_text(size = 15, hjust = 0.5),
         axis.text.x = element_text(size = 14, angle = 45, vjust = 1, hjust = 1),
         axis.text.y = element_text(size = 14),

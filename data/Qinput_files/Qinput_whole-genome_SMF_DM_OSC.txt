@@ -1,0 +1,2 @@
+FileName	SampleName
+/g/krebs/boulanger/HTS/SMF/Dmelanogaster.dm6/aln/SMF_DE_OSC_repMerged_dp_rm.bam	SMF_DM_DE_OSC

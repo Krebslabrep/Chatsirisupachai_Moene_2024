@@ -1,6 +1,6 @@
 ########## Data preparation for mouse (PRO-seq) ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 22.09.2024
+# LastUpdate: 28.11.2024
 
 library(QuasR)
 library(dplyr)
@@ -41,6 +41,14 @@ count_promoters$TKO_R3 <- unlist(lapply(count_promoters$TKO_R3, RPM, all_mapped 
 count_promoters$TKO_avg <- as.numeric(apply(dplyr::select(count_promoters, contains("TKO")), 1, mean))
 
 saveRDS(count_promoters, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_promoter_Kreibich2023_PRO-seq_RPM.rds")
+
+# get top 5% PRO-seq
+count_promoters <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_promoter_Kreibich2023_PRO-seq_RPM.rds")
+sorted_data <- count_promoters[order(-count_promoters$TKO_avg), ]
+top_5_percent_count <- ceiling(0.05 * nrow(sorted_data))
+top_5_percent <- head(sorted_data, top_5_percent_count)
+PROseq_MM_top_5 <- row.names(top_5_percent)
+saveRDS(PROseq_MM_top_5, "/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_promoter_PRO-seq_top_5.rds")
 
 
 ##### PRO-seq profile

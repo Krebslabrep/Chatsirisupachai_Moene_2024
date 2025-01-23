@@ -1,6 +1,6 @@
 ########## Correlation heatmap between Amplicon SMF states and other datasets ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 23.09.2024
+# LastUpdate: 23.01.2025
 
 library(tidyverse)
 library(dplyr)
@@ -46,7 +46,7 @@ head(merged_df)
 colnames(merged_df) <- c("unassigned", "nucleosome", "unbound", "PIC", "PIC + PolII", "PolII", 
                          "RNA-seq", "PolII ChIP-seq", "MNase-seq", "PRO-seq")
 
-### Correlation matrices (*** Figure S3B ***)
+### Correlation matrices (*** Figure EV3B ***)
 spearman_corr <- cor(merged_df, method = "spearman")
 
 brk <- seq(-1,1,0.1)

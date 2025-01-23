@@ -1,10 +1,11 @@
 ########## Redistribution plot of ChIP-seq signal and SMF (Figure 2A,C) ##########
 # Author: Kasit Chatsirisupachai
-# LastUpdate: 23.09.2024
+# LastUpdate: 28.11.2024
 
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
+library(RColorBrewer)
 
 ##### Mouse #####
 ### Load data
@@ -17,10 +18,10 @@ SMF <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/
 # PolII ChIP-seq
 ChIP_seq <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_2024/data/MM/MM_promoter_ChIP-seq_counts.rds")
 
-ChIPdata <- ChIP_seq %>%
+ChIPdata_MM <- ChIP_seq %>%
   filter(row.names(ChIP_seq) %in% row.names(SMF)) %>%
   dplyr::select(PolII_mESC_SRX1089844) %>%
-  rename(ChIP_seq = PolII_mESC_SRX1089844) %>%
+  dplyr::rename(ChIP_seq = PolII_mESC_SRX1089844) %>%
   dplyr::select(ChIP_seq) %>%
   arrange(ChIP_seq)
 
@@ -28,12 +29,12 @@ ChIPdata <- ChIP_seq %>%
 brk <- c(-10, seq(0, 9, 0.1), 10) #log scale to follow extreme value are collapsed
 
 
-Freqmat <- SMF[rownames(ChIPdata),]
+Freqmat <- SMF[rownames(ChIPdata_MM),]
 stateList <- colnames(SMF)
 
 sp <- names(Freqmat)
 mat <- Freqmat[!is.na(rowSums(Freqmat)),]
-mat <- cbind(Freqmat, ChIPdata)
+mat <- cbind(Freqmat, ChIPdata_MM)
 
 mat$ChIP_enrich.log2 <- log2(mat$ChIP_seq + 1)
 
@@ -62,7 +63,7 @@ Q2 <- mts/rowSums(mts)
 colnames(Q2) <- stateList
 
 ### Plotting
-colour_set <- colorRampPalette(brewer.pal(9,"Set1"))(9)[c(9,2,3,1,5,4)]#[c(2,3,4,9)]
+colour_set <- colorRampPalette(brewer.pal(9,"Set1"))(9)[c(7,2,3,1,5,4)]#[c(2,3,4,9)]
 
 plot_df <- reshape2::melt(Q2)
 plot_df$value <- plot_df$value * 100
@@ -107,10 +108,10 @@ ChIP_seq <- readRDS("/g/krebs/chatsiri/mouse_droso_PolII/Chatsirisupachai_Moene_
 ChIP_seq %>%
   mutate(PolII_avg = (PolII_S2_SRX3981728 + PolII_S2_SRX3981727)/2) -> ChIP_seq
 
-ChIPdata <- ChIP_seq %>%
+ChIPdata_DM <- ChIP_seq %>%
   filter(row.names(ChIP_seq) %in% row.names(SMF)) %>%
   dplyr::select(PolII_avg) %>%
-  rename(ChIP_seq = PolII_avg) %>%
+  dplyr::rename(ChIP_seq = PolII_avg) %>%
   dplyr::select(ChIP_seq) %>%
   arrange(ChIP_seq)
 
@@ -118,12 +119,12 @@ ChIPdata <- ChIP_seq %>%
 brk <- c(-10, seq(0, 16, 0.1), 17) #log scale to follow extreme value are collapsed
 
 
-Freqmat <- SMF[rownames(ChIPdata),]
+Freqmat <- SMF[rownames(ChIPdata_DM),]
 stateList <- colnames(SMF)
 
 sp <- names(Freqmat)
 mat <- Freqmat[!is.na(rowSums(Freqmat)),]
-mat <- cbind(Freqmat, ChIPdata)
+mat <- cbind(Freqmat, ChIPdata_DM)
 
 mat$ChIP_enrich.log2 <- log2(mat$ChIP_seq + 1)
 
@@ -152,7 +153,7 @@ Q2 <- mts/rowSums(mts)
 colnames(Q2) <- stateList
 
 ### Plotting
-colour_set <- colorRampPalette(brewer.pal(9,"Set1"))(9)[c(9,2,3,1,5,4)]#[c(2,3,4,9)]
+colour_set <- colorRampPalette(brewer.pal(9,"Set1"))(9)[c(7,2,3,1,5,4)]#[c(2,3,4,9)]
 
 plot_df <- reshape2::melt(Q2)
 plot_df$value <- plot_df$value * 100
