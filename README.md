@@ -1,4 +1,4 @@
-# Chatsirisupachai, Moene et al., 2024
+# Chatsirisupachai, Moene et al., 2025 - Mouse promoters are characterised by low occupancy and high turnover of RNA polymerase II
 
 Kasit Chatsirisupachai<sup>#</sup>, Christina J.I. Moene<sup>#</sup>, Rozemarijn Kleinendorst, Elisa Kreibich, Nacho Molina*, and Arnaud Krebs*
 This GitHub repository contains custom scripts for data analysis and figures from the manuscript
