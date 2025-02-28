@@ -1,6 +1,6 @@
 # Chatsirisupachai, Moene et al., 2025 - Mouse promoters are characterised by low occupancy and high turnover of RNA polymerase II
 
-Kasit Chatsirisupachai<sup>#</sup>, Christina J.I. Moene<sup>#</sup>, Rozemarijn Kleinendorst, Elisa Kreibich, Nacho Molina*, and Arnaud Krebs*
+Kasit Chatsirisupachai<sup>#</sup>, Christina J.I. Moene<sup>#</sup>, Rozemarijn Kleinendorst, Elisa Kreibich, Nacho Molina*, and Arnaud Krebs*\
 This GitHub repository contains custom scripts for data analysis and figures from the manuscript
 "Mouse promoters are characterised by low occupancy and high turnover of RNA polymerase II". The manuscript has recently been accepted for publication in _Molecular Systems Biology_
 
@@ -12,7 +12,7 @@ The general transcription machinery and its occupancy at promoters are highly co
 ## Description
 data: Contains processed data used in and obtained from the analyses. Note that raw data generated in this study have been deposited in ArrayExpress under accession numbers E-MTAB-14461 and E-MTAB-14462. Publicly available datasets used in this study are listed in Table EV1 and can be found in the online version of the manuscript.
 
-script: Contains all scripts used to perform the analyses in this project. The scripts are organized into subfolders based on the analysis type. Each subfolder includes a README.md file that describes the corresponding script files.
+script: Contains all scripts used to perform the analyses in this project. The scripts are organised into subfolders based on the analysis type. Each subfolder includes a README.md file that describes the corresponding script files.
 
 ## Requirements
 Most analyses were done using R (version 4.2.2). Only the modelling analysis was performed in Matlab.
