@@ -2,7 +2,8 @@
 
 Kasit Chatsirisupachai<sup>#</sup>, Christina J.I. Moene<sup>#</sup>, Rozemarijn Kleinendorst, Elisa Kreibich, Nacho Molina*, and Arnaud Krebs*
 This GitHub repository contains custom scripts for data analysis and figures from the manuscript
-"Mouse promoters are characterised by low occupancy and high turnover of RNA polymerase II".
+"Mouse promoters are characterised by low occupancy and high turnover of RNA polymerase II". The manuscript has recently been accepted for publication in _Molecular Systems Biology_
+
 BioRxiv: https://www.biorxiv.org/content/10.1101/2024.09.23.614464v1
 
 ## Abstract
@@ -16,37 +17,37 @@ script: Contains all scripts used to perform the analyses in this project. The s
 ## Requirements
 Most analyses were done using R (version 4.2.2). Only the modelling analysis was performed in Matlab.
 ### R packages
-* `AnnotationDbi` (1.60.2)
-* `Biostrings` (2.66.0)
-* BSgenome.Dmelanogaster.UCSC.dm6 (1.4.1)
-* BSgenome.Mmusculus.UCSC.mm10 (1.4.3)
-* caTools (1.18.2)
-* cowplot (1.1.1)
-* dplyr (1.1.4)
-* GenomicFeatures (1.50.4)
-* GenomicRanges (1.50.2)
-* GGally (1.50.2)
-* ggExtra (0.10.0)
-* ggplot2 (3.5.1)
-* ggpointdensity (0.1.0)
-* ggpubr (0.6.0)
-* gplots (3.1.3)
-* liftOver (1.22.0)
-* parallel (4.2.2)
-* pheatmap (1.0.12)
-* plyranges (1.18.0)
-* QuasR (1.38.0)
-* RColorBrewer (1.1.3)
-* Rsamtools (2.14.0)
-* readr (2.1.4)
-* reshape2 (1.4.4)
-* rtracklayer (1.58.0)
-* SingleMoleculeFootprinting ('promoter' branch)
-* stringi (1.7.12)
-* tibble (3.2.1)
-* tidyr (1.3.0)
-* tidyverse (2.0.0)
-* viridis (0.6.2)
+* `AnnotationDbi (1.60.2)`
+* `Biostrings (2.66.0)`
+* `BSgenome.Dmelanogaster.UCSC.dm6 (1.4.1)`
+* `BSgenome.Mmusculus.UCSC.mm10 (1.4.3)`
+* `caTools (1.18.2)`
+* `cowplot (1.1.1)`
+* `dplyr (1.1.4)`
+* `GenomicFeatures (1.50.4)`
+* `GenomicRanges (1.50.2)`
+* `GGally (1.50.2)`
+* `ggExtra (0.10.0)`
+* `ggplot2 (3.5.1)`
+* `ggpointdensity (0.1.0)`
+* `ggpubr (0.6.0)`
+* `gplots (3.1.3)`
+* `liftOver (1.22.0)`
+* `parallel (4.2.2)`
+* `pheatmap (1.0.12)`
+* `plyranges (1.18.0)`
+* `QuasR (1.38.0)`
+* `RColorBrewer (1.1.3)`
+* `Rsamtools (2.14.0)`
+* `readr (2.1.4)`
+* `reshape2 (1.4.4)`
+* `rtracklayer (1.58.0)`
+* `SingleMoleculeFootprinting ('promoter' branch)`
+* `stringi (1.7.12)`
+* `tibble (3.2.1)`
+* `tidyr (1.3.0)`
+* `tidyverse (2.0.0)`
+* `viridis (0.6.2)`
 
 Note that the package `SingleMoleculeFootprinting` used in this manuscript come from the `promoter` branch, which can be installed using the following command.
 ```r
