@@ -5,7 +5,7 @@ This folder contains scripts to analyse and plot Amplicon SMF for mouse (this st
 ## Order of Scripts
 
 1. [01_MM_SMF_Amplicon_TRP_SM_sorting.R](/scripts/02_SMF_amplicon/01_MM_SMF_Amplicon_TRP_SM_sorting.R) 
-   * Performs promoter-state sorting on mouse amplicon SMF data as described in the Methods section of the manuscript. This results in a 4-bit vector classifying the state of every read among 2^4^ = 16 theoretical possibilities.
+   * Performs promoter-state sorting on mouse amplicon SMF data as described in the Methods section of the manuscript. This results in a 4-bit vector classifying the state of every read among 2<sup>4</sup> = 16 theoretical possibilities.
 
 2. [02_MM_SMF_Amplicon_TRP_promoter_states.R](/scripts/02_SMF_amplicon/02_MM_SMF_Amplicon_TRP_promoter_states.R) 
    * Assigns promoter state frequency to each mouse promoter in amplicon regions, along with the biological interpretation (Unassigned, Nucleosome, Unbound, PIC, PIC + Pol II, and Pol II), as described in the Methods section of the manuscript and Figure EV2B.
@@ -20,7 +20,7 @@ This folder contains scripts to analyse and plot Amplicon SMF for mouse (this st
    * Generates single-molecule plots for Figure EV4A.
 
 6. [06_DM_SMF_Amplicon_TRP_SM_sorting.R](/scripts/02_SMF_amplicon/06_DM_SMF_Amplicon_TRP_SM_sorting.R) 
-   * Performs promoter-state sorting on _Drosophila_ amplicon SMF data (Krebs et al., 2017) as described in the Methods section of the manuscript. This results in a 4-bit vector classifying the state of every read among 2^4^ = 16 theoretical possibilities.
+   * Performs promoter-state sorting on _Drosophila_ amplicon SMF data (Krebs et al., 2017) as described in the Methods section of the manuscript. This results in a 4-bit vector classifying the state of every read among 2<sup>4</sup> = 16 theoretical possibilities.
 
 7. [07_DM_SMF_Amplicon_TRP_promoter_states.R](/scripts/02_SMF_amplicon/07_DM_SMF_Amplicon_TRP_promoter_states.R) 
    * Assigns promoter state frequency to each _Drosophila_ promoter in amplicon regions, along with the biological interpretation (Unassigned, Nucleosome, Unbound, PIC, PIC + Pol II, and Pol II), as described in the Methods section of the manuscript and Figure EV2B.

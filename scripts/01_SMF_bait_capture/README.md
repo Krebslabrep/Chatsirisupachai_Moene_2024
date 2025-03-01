@@ -11,7 +11,7 @@ This folder contains scripts to analyse and plot bait-capture SMF (mouse; Sönme
    * Compares promoter SMF, PRO-seq, and MNase-seq signals from mouse and _Drosophila_. These plots correspond to Figures 1E-F.
 
 3. [03_MM_SMF_bait-capture_SM_sorting.R](/scripts/01_SMF_bait_capture/03_MM_SMF_bait-capture_SM_sorting.R)  
-   * Performs promoter-state sorting on mouse SMF data (Sönmezer et al., 2021) as described in the Methods section of the manuscript. This results in a 4-bit vector classifying the state of every read among 2^4^ = 16 theoretical possibilities.
+   * Performs promoter-state sorting on mouse SMF data (Sönmezer et al., 2021) as described in the Methods section of the manuscript. This results in a 4-bit vector classifying the state of every read among 2<sup>4</sup> = 16 theoretical possibilities.
 
 4. [04_MM_SMF_bait-capture_promoter_states.R](/scripts/01_SMF_bait_capture/04_MM_SMF_bait-capture_promoter_states.R)  
    * Assigns promoter state frequency to each mouse promoter, along with the biological interpretation (Unassigned, Nucleosome, Unbound, PIC, PIC + Pol II, and Pol II), as described in the Methods section of the manuscript and Figure EV2B.
@@ -23,7 +23,7 @@ This folder contains scripts to analyse and plot bait-capture SMF (mouse; Sönme
    * Checks the correlation of promoter state frequency from mouse SMF data with other omics data. This results in Figure EV2D.
 
 7. [07_DM_SMF_genome-wide_SM_sorting.R](/scripts/01_SMF_bait_capture/07_DM_SMF_genome-wide_SM_sorting.R)  
-   * Performs promoter-state sorting on _Drosophila_ SMF data (Krebs et al., 2017) as described in the Methods section of the manuscript. This results in a 4-bit vector classifying the state of every read among 2^4^ = 16 theoretical possibilities.
+   * Performs promoter-state sorting on _Drosophila_ SMF data (Krebs et al., 2017) as described in the Methods section of the manuscript. This results in a 4-bit vector classifying the state of every read among 2<sup>4</sup> = 16 theoretical possibilities.
 
 8. [08_DM_SMF_genome-wide_promoter_states.R](/scripts/01_SMF_bait_capture/08_DM_SMF_genome-wide_promoter_states.R)  
    * Assigns promoter state frequency to each _Drosophila_ promoter, along with the biological interpretation (Unassigned, Nucleosome, Unbound, PIC, PIC + Pol II, and Pol II), as described in the Methods section of the manuscript and Figure EV2B.
